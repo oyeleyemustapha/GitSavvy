@@ -21,13 +21,10 @@ class LogMixin(object):
     """
 
     def run(self, *args, file_path=None, branch=None):
-        self._file_path = file_path
-        self._branch = branch
-        sublime.set_timeout_async(self.run_async)
+        sublime.set_timeout_async(lambda: self.run_async(file_path, branch), 0)
 
-    def run_async(self):
-        show_log_panel(self.commit_generator(), self.do_action)
-
+    def run_async(self, file_path, branch):
+        show_log_panel(self.log_generator(file_path=file_path, branch=branch), self.do_action)
 
     def do_action(self, commit_hash):
         if hasattr(self, 'window'):
