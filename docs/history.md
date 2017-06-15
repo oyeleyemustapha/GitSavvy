@@ -47,8 +47,6 @@ Perform `git diff` between a selected commit and the current commit but only res
 
 A GitHub-style blame view is displayed.  Each hunk of the file will be shown on the right, with the associated commit info shown to its left.  This includes the beginning of the commit message, commit hash, author, and age.
 
-Pressing `SUPER-Enter` (`CTRL-Enter` in Windows) while your cursor is inside a hunk will take you to that specific commit.
-
 ### Blame options
 When run, you will be prompted for how you want the blame view to search for changes:
 
@@ -66,3 +64,19 @@ Ignore whitespace, and detect when lines have been moved or copied from any file
 
 #### Detect moved or copied lines across all commits
 Ignore whitespace, and detect when lines have been moved or copied from any file across the full commit history of the repository, attributing lines to the original commit rather than the commit that moved or copied them (`git blame -w -CCC`).
+
+## Action in blame view
+
+When you have open the blame view you have a new set of commands
+
+Use `.` to go to next chunk and use `,` to go to previous chunk. In the title you can find the file name and the commit.
+Now if you hit `Enter` it will open a panel with all key bindings and actions.
+
+Actions
+    Open Commit -> Open the where the courser are located
+    Blame before selected commit -> It finds the chunk you are in and jump the commit before that. Handy when you know exactly what you are looking for. It can be hard to keep track of where you were in the file since the line number probably changed.(Time travel)
+    Blame on one older commit -> Same as the one above but only jump one commit at the time. (Time travel)
+    Blame on one newer commit -> Same as the one above but only jump one commit at the time.(Time travel)
+    Pick a new commit to blame -> Pick commit to checkout(Time travel)
+    Show file at most recent commit -> Show the file with syntax highlighting at the checkout commit
+    Show file at this chunk's commit -> Find the commit from the chunk where the cursor is. Then open the file at that commit.
